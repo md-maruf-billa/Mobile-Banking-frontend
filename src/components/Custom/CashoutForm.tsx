@@ -15,19 +15,19 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "../ui/textarea"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog"
 
-const SendMoneyForm = () => {
+const CashOutForm = () => {
       return (
             <Card className="max-w-md w-full mt-10">
                   <CardHeader>
-                        <CardTitle className="text-center">Send Money</CardTitle>
-                        <CardDescription className="text-center">Over 100 TK transaction charge 5 TK</CardDescription>
+                        <CardTitle className="text-center">Cash Out</CardTitle>
+                        <CardDescription className="text-center">1.5% TK charge for transaction</CardDescription>
                   </CardHeader>
                   <form>
                         <CardContent>
                               <div className="grid w-full items-center gap-4">
                                     <div className="flex flex-col space-y-1.5">
-                                          <Label htmlFor="number">Number / Email</Label>
-                                          <Input id="number" placeholder="Enter a number or email" />
+                                          <Label htmlFor="number">Agent Number / Email</Label>
+                                          <Input id="number" placeholder="Enter a agent number or email" />
                                     </div>
                                     <div className="flex flex-col space-y-1.5">
                                           <Label htmlFor="amout">Amout</Label>
@@ -43,7 +43,7 @@ const SendMoneyForm = () => {
                         <CardFooter className="flex justify-end">
                               <Dialog>
                                     <DialogTrigger asChild>
-                                          <Button >Send Now</Button>
+                                          <Button >Cash Out</Button>
                                     </DialogTrigger>
                                     <DialogContent className="sm:max-w-[425px]">
                                           <DialogHeader>
@@ -67,4 +67,4 @@ const SendMoneyForm = () => {
       );
 };
 
-export default SendMoneyForm;
+export default CashOutForm;
