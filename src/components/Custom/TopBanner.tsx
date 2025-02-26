@@ -1,5 +1,5 @@
 "use client"
-import { DollarSign, Settings } from 'lucide-react';
+import { AlignJustify, DollarSign, Settings } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -44,7 +44,7 @@ const TopBanner = () => {
       return (
             <div className='flex justify-between items-center h-20 bg-[#ffb500] rounded-b-2xl shadow-xl px-8'>
                   {/* User Info */}
-                  <Avatar>
+                  <Avatar >
                         <AvatarImage src={user?.profileImage} alt="@shadcn" />
                         <AvatarFallback>{user?.name?.slice(0, 2)?.toUpperCase()}</AvatarFallback>
                   </Avatar>
@@ -80,7 +80,9 @@ const TopBanner = () => {
                   </div>
 
                   {/* Setting */}
-                  <Popover>
+                  <Button className={user?.isActive ? "bg-green-600 hover:bg-green-600" : "bg-red-600 hover:bg-red-600"}>Account-{user?.isActive ? "Active" : "Under Review"}</Button>
+                  {/* <AlignJustify className="text-white" /> */}
+                  {/* <Popover>
                         <PopoverTrigger asChild>
                               <Button variant="outline"><Settings /></Button>
                         </PopoverTrigger>
@@ -128,7 +130,7 @@ const TopBanner = () => {
                                     </div>
                               </div>
                         </PopoverContent>
-                  </Popover>
+                  </Popover> */}
             </div>
       );
 };

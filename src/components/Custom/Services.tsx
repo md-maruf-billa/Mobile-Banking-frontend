@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { MdAddCard, MdOutlineSendToMobile } from 'react-icons/md';
+import { MdOutlineSendToMobile } from 'react-icons/md';
 import { SlPresent } from 'react-icons/sl';
 
 const Services = () => {
@@ -19,14 +19,6 @@ const Services = () => {
                               <MdOutlineSendToMobile className='text-2xl md:text-4xl' />
                               <span className='text-sm text-gray-600'>Cash Out</span>
                         </Link>
-
-
-                        {/* <Link href="/cash-in" className='flex flex-col justify-center items-center gap-2 border rounded-full size-24'>
-                              <MdAddCard className='text-3xl md:text-4xl' />
-                              <span className='text-sm text-gray-600'>Cash In</span>
-                        </Link> */}
-
-
 
                   </div>
 

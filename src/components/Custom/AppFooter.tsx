@@ -6,7 +6,9 @@ import Link from 'next/link';
 import { getLogeduser, logOutUser } from "@/serverActions";
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 const AppFooter = () => {
+      const router = useRouter()
       const [user, setUser] = useState<any>();
       useEffect(() => {
             const fetchData = async () => {
@@ -19,6 +21,7 @@ const AppFooter = () => {
             const res = await logOutUser();
             if (res) {
                   toast.success("Logout Successfull..")
+                  router.push("/")
             } else {
                   toast.error("Logout faild..!!")
             }
@@ -26,7 +29,7 @@ const AppFooter = () => {
       }
       return (
             <div className='flex justify-between items-center px-16 bg-[#ffb500] shadow-lg text-white py-5 rounded-t-xl '>
-                  <Link href="/home" className='flex flex-col items-center'>
+                  <Link href={user?.role == "user" ? "/home" : user?.role == "agent" ? "/agent-home" : user?.role == "admin" ? "/admin-home" : ""} className='flex flex-col items-center'>
                         <GoHome className='text-5xl' />
                         <span className='text-sm'>Home</span>
                   </Link>

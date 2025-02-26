@@ -15,6 +15,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import { loginUser } from "@/serverActions"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 const Wellcome = () => {
       const router = useRouter()
       const { register, handleSubmit } = useForm()
@@ -57,6 +58,7 @@ const Wellcome = () => {
                               </div>
                               <Button type="submit" className="w-full mt-8">Login Now</Button>
                         </form>
+                        <p className="text-center mt-4 text-gray-600">Don't Have Account? <Link className="text-blue-500" href={"/register"}>Register Now</Link></p>
                   </CardContent>
             </Card>
       );

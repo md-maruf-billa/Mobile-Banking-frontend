@@ -1,9 +1,10 @@
 import { TransactionTable } from '@/components/Custom/TransactionTable';
-import { getMyTransaction } from '@/serverActions';
+import { getAllTransactionForAdmin, getMyTransaction } from '@/serverActions';
 import React from 'react';
 
-const UserTransaction = async () => {
-      const data = await getMyTransaction();
+const AdminTransactionPage = async () => {
+      const data = await getAllTransactionForAdmin();
+      console.log(data)
       const tableData = data?.map((dt: any) => ({
             profile: dt.reciverId.name,
             type: dt.payType,
@@ -19,4 +20,4 @@ const UserTransaction = async () => {
       );
 };
 
-export default UserTransaction;
+export default AdminTransactionPage;

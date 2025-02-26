@@ -1,8 +1,7 @@
-import { TransactionTable } from '@/components/Custom/TransactionTable';
-import { getMyTransaction } from '@/serverActions';
-import React from 'react';
+import { TransactionTable } from "@/components/Custom/TransactionTable";
+import { getMyTransaction } from "@/serverActions";
 
-const UserTransaction = async () => {
+const page = async () => {
       const data = await getMyTransaction();
       const tableData = data?.map((dt: any) => ({
             profile: dt.reciverId.name,
@@ -19,4 +18,4 @@ const UserTransaction = async () => {
       );
 };
 
-export default UserTransaction;
+export default page;
