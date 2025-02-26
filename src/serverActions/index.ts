@@ -40,9 +40,17 @@ export const getLogeduser = async () => {
 }
 
 export const getMe = async () => {
+  const accessToken = (await cookies()).get('accessToken')?.value
   const user = await getLogeduser()
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/user/${user?.userId}`
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/user/${user?.userId}`,
+
+    {
+      headers: {
+        Authorization: accessToken as string
+      },
+      next: { tags: ['SENDMONEY'] }
+    }
   )
   const data = await res.json()
   return data?.data
@@ -56,4 +64,21 @@ export const logOutUser = async () => {
     console.log(error)
     return false
   }
+}
+
+export const getMyTransaction = async () => {
+  const accessToken = (await cookies()).get('accessToken')?.value
+  const user = await getLogeduser()
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/user/my-transaction/${user?.userId}`,
+    {
+      next: { tags: ['SENDMONEY'] },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: accessToken as string
+      }
+    }
+  )
+  const data = await res.json()
+  return data?.data
 }

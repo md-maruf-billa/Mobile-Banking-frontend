@@ -16,21 +16,31 @@ import { TUser } from '@/types';
 const TopBanner = () => {
       const [user, setUser] = useState<TUser>()
       const [isBalanceVisible, setIsBalanceVisible] = useState(false);
+      const [balanceTimeout, setBalanceTimeout] = useState<NodeJS.Timeout | null>(null);
 
       // Handle click to show/hide balance
       const toggleBalanceVisibility = () => {
             if (user?.accountType === 'user' || user?.accountType === 'agent') {
-                  setIsBalanceVisible(prev => !prev);
+                  setIsBalanceVisible(true);
+                  if (balanceTimeout) {
+                        clearTimeout(balanceTimeout);
+                  }
+
+                  // Automatically hide the balance after 4 seconds
+                  const timeout = setTimeout(() => {
+                        setIsBalanceVisible(false);
+                  }, 3000);
+                  setBalanceTimeout(timeout);
             }
       };
+
       useEffect(() => {
             const loadUser = async () => {
                   const userData = await getMe();
-                  setUser(userData)
-            }
-            loadUser()
-      }, [])
-
+                  setUser(userData);
+            };
+            loadUser();
+      }, [isBalanceVisible]);
       return (
             <div className='flex justify-between items-center h-20 bg-[#ffb500] rounded-b-2xl shadow-xl px-8'>
                   {/* User Info */}

@@ -28,7 +28,7 @@ export default function RootLayout({
                         className={`${geistSans.variable} ${geistMono.variable}`}
                   >
                         {children}
-                        <Toaster position="top-center" richColors />
+                        <Toaster visibleToasts={1} position="top-center" richColors />
                   </body>
             </html>
       );

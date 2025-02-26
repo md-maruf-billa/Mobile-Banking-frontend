@@ -3,7 +3,6 @@ import { getMe } from '@/serverActions';
 
 const HomePage = async () => {
       const user = await getMe()
-      console.log(user)
       return (
             <div className=''>
 

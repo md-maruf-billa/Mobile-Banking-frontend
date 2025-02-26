@@ -24,9 +24,7 @@ const RegisterPage = () => {
             const res = await registerUser(payload)
             if (res.success) {
                   toast.success(res.message)
-                  console.log(res.data)
                   if (res?.data?.accountType == "user") {
-                        console.log("hello")
                         router.push("/home")
                   }
                   else if (res?.data?.accountType == "agent") {

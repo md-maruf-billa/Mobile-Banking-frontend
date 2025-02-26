@@ -43,7 +43,6 @@ const SendMoneyForm = ({ user }: { user: any }) => {
 
             if (Object.keys(formErrors).length === 0) {
                   const payload = { reciverId: receiverId, amount: Number(amount), ref, pin, senderId: user?.userId, payType: "Send Money" };
-                  console.log(payload)
                   const res = await sendMoney(payload)
                   if (res?.success) {
                         toast.success(res?.message)
