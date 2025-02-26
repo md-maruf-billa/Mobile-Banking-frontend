@@ -11,3 +11,18 @@ export type TUserLogin = {
   accountNo: string
   pin: string
 }
+
+export type TUser = {
+  _id?: string
+  name: string
+  profileImage?: string
+  pin: string
+  mobileNo: string
+  email: string
+  accountType: 'admin' | 'agent' | 'user'
+  nid: string
+  balance: number
+  isDeleted: boolean
+  isActive: boolean
+  totalMoney?: number
+}

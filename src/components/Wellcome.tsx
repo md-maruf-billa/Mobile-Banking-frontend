@@ -23,7 +23,15 @@ const Wellcome = () => {
             const res = await loginUser(payload)
             if (res.success) {
                   toast.success(res.message)
-                  router.push("/home")
+                  if (res?.data?.user?.accountType == "user") {
+                        router.push("/home")
+                  }
+                  else if (res?.data?.user?.accountType == "agent") {
+                        router.push("/agent-home")
+                  }
+                  else if (res?.data?.user?.accountType == "admin") {
+                        router.push("/admin-home")
+                  }
             }
             else {
                   toast.error(res.message)
@@ -32,7 +40,7 @@ const Wellcome = () => {
       return (
             <Card className="w-[350px]">
                   <CardHeader>
-                        <CardTitle className="text-center text-4xl font-semibold">CashaGo</CardTitle>
+                        <CardTitle className="text-center text-xl font-semibold"><span className="text-5xl text-[#ffb500]">CashaGo</span></CardTitle>
                         <CardDescription className="text-center">This is a simple MFS system</CardDescription>
                   </CardHeader>
                   <CardContent>

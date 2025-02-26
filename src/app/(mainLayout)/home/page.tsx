@@ -1,9 +1,9 @@
-import AppFooter from '@/components/Custom/AppFooter';
 import Services from '@/components/Custom/Services';
-import TopBanner from '@/components/Custom/TopBanner';
-import React from 'react';
+import { getMe } from '@/serverActions';
 
-const HomePage = () => {
+const HomePage = async () => {
+      const user = await getMe()
+      console.log(user)
       return (
             <div className=''>
 
